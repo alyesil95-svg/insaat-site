@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useRef } from "react";
 
 export default function Hero() {
@@ -94,7 +94,7 @@ export default function Hero() {
       >
         <video
           ref={videoRef}
-          src="https://res.cloudinary.com/dqmjnp8ti/video/upload/q_auto,f_auto/v1781630695/hero_hquc97.mp4"
+          src="https://res.cloudinary.com/dqmjnp8ti/video/upload/q_auto:low,w_1280,f_mp4/v1781630695/hero_hquc97.mp4"
           muted
           playsInline
           preload="auto"
@@ -146,7 +146,7 @@ export default function Hero() {
               animation: "fadeIn 1.4s ease both 0.2s",
             }}
           >
-            Türkiye&apos;nin Öncü İnşaat Firması
+            TÃ¼rkiye&apos;nin Ã–ncÃ¼ Ä°nÅŸaat FirmasÄ±
           </p>
 
           <h1
@@ -160,7 +160,7 @@ export default function Hero() {
               animation: "fadeIn 1.6s ease both 0.35s",
             }}
           >
-            DEMO İNŞAAT
+            DEMO Ä°NÅAAT
           </h1>
 
           <p
@@ -175,7 +175,7 @@ export default function Hero() {
               animation: "fadeIn 1.6s ease both 0.55s",
             }}
           >
-            Türkiye&apos;nin En Prestijli Yapılarını İnşa Ediyoruz
+            TÃ¼rkiye&apos;nin En Prestijli YapÄ±larÄ±nÄ± Ä°nÅŸa Ediyoruz
           </p>
 
           <div
@@ -192,9 +192,9 @@ export default function Hero() {
               animation: "fadeIn 1.6s ease both 0.75s",
             }}
           >
-            <span>İSTANBUL</span>
+            <span>Ä°STANBUL</span>
             <span style={{ width: 4, height: 4, borderRadius: 9999, background: "#c9a84c" }} />
-            <span>İZMİR</span>
+            <span>Ä°ZMÄ°R</span>
             <span style={{ width: 4, height: 4, borderRadius: 9999, background: "#c9a84c" }} />
             <span>ANKARA</span>
           </div>

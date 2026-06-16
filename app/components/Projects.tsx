@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "../lib/gsap";
@@ -181,7 +181,7 @@ export default function Projects() {
       >
         <video
           ref={videoRef}
-          src="https://res.cloudinary.com/dqmjnp8ti/video/upload/q_auto,f_auto/v1781630869/projects_alk3hp.mp4"
+          src="https://res.cloudinary.com/dqmjnp8ti/video/upload/q_auto:low,w_1280,f_mp4/v1781630869/projects_alk3hp.mp4"
           muted
           playsInline
           preload="auto"
@@ -207,7 +207,7 @@ export default function Projects() {
           padding: isMobile ? "120px 20px 100px" : "0 24px 18vh",
         }}
       >
-        {/* Header — owns the first screen */}
+        {/* Header â€” owns the first screen */}
         <div
           className="proj-head"
           style={{
@@ -244,7 +244,7 @@ export default function Projects() {
             className="proj-head-anim font-body"
             style={{ fontWeight: 300, fontSize: "0.95rem", letterSpacing: "0.08em", color: "rgba(255,255,255,0.75)" }}
           >
-            500+ tamamlanan projeden öne çıkanlar
+            500+ tamamlanan projeden Ã¶ne Ã§Ä±kanlar
           </p>
         </div>
 
@@ -270,12 +270,12 @@ export default function Projects() {
                     <h3 className="proj-name">{p.name}</h3>
                     <span className="proj-rule" />
                     <div className="proj-meta">
-                      {p.location} · {p.year}
+                      {p.location} Â· {p.year}
                     </div>
                     <div className="proj-sqm">{p.sqm}</div>
                     <a href="#iletisim" className="proj-link">
-                      Projeyi İncele
-                      <span className="arr">â†’</span>
+                      Projeyi Ä°ncele
+                      <span className="arr">Ã¢â€ â€™</span>
                       <span className="u" />
                     </a>
                   </div>
