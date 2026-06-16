@@ -21,7 +21,7 @@ const CARD_IMAGES: Record<number, string> = {
 };
 
 const PROJECTS_DESKTOP =
-  "https://res.cloudinary.com/dqmjnp8ti/video/upload/q_auto:low,w_854,h_480,f_mp4,br_800k/v1781630869/projects_alk3hp.mp4";
+  "https://res.cloudinary.com/dqmjnp8ti/video/upload/q_auto:low,w_640,h_360,f_mp4,br_300k,fps_15/v1781630869/projects_alk3hp.mp4";
 const PROJECTS_MOBILE =
   "https://res.cloudinary.com/dqmjnp8ti/video/upload/q_auto:low,w_640,h_360,f_mp4,br_400k/v1781630869/projects_alk3hp.mp4";
 
