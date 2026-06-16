@@ -120,7 +120,7 @@ export default function Projects() {
       >
         <video
           ref={videoRef}
-          src="https://res.cloudinary.com/dqmjnp8ti/video/upload/q_auto:low,w_1280,f_mp4/v1781630869/projects_alk3hp.mp4"
+          src="https://res.cloudinary.com/dqmjnp8ti/video/upload/q_auto:low,w_854,h_480,f_mp4,br_800k/v1781630869/projects_alk3hp.mp4"
           muted
           playsInline
           preload="auto"
