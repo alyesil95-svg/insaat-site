@@ -5,7 +5,7 @@ import { useDeviceVideo } from "../lib/mobile";
 const HERO_DESKTOP =
   "https://res.cloudinary.com/dqmjnp8ti/video/upload/q_auto:low,w_1280,f_mp4/v1781630695/hero_hquc97.mp4";
 const HERO_MOBILE =
-  "https://res.cloudinary.com/dqmjnp8ti/video/upload/q_auto:low,w_640,h_360,f_mp4,br_400k/v1781630695/hero_hquc97.mp4";
+  "https://res.cloudinary.com/dqmjnp8ti/video/upload/q_auto:good,w_854,f_mp4/v1781630695/hero_hquc97.mp4";
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
