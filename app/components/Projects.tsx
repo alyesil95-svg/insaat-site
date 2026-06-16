@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "../lib/gsap";
@@ -30,74 +30,13 @@ export default function Projects() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  // Scroll-driven video scrubbing behind the cards.
+  // Background video — silent autoplay loop (no scrubbing).
   useEffect(() => {
-    const section = sectionRef.current;
     const video = videoRef.current;
-    if (!section || !video) return;
-
-    if (isMobile) {
-      video.loop = true;
-      video.muted = true;
-      video.play().catch(() => {});
-    } else {
-      video.loop = false;
-      video.pause();
-      video.currentTime = 0;
-    }
-
-    let rafId: number | null = null;
-
-    const update = () => {
-      rafId = null;
-      if (isMobile || !video.duration || !isFinite(video.duration)) return;
-      const total = section.offsetHeight - window.innerHeight;
-      const scrolled = Math.min(
-        Math.max(-section.getBoundingClientRect().top, 0),
-        total
-      );
-      const progress = total > 0 ? scrolled / total : 0;
-      const t = Math.min(progress * video.duration, video.duration - 0.001);
-      if (video.fastSeek) {
-        try {
-          video.fastSeek(t);
-        } catch {
-          video.currentTime = t;
-        }
-      } else {
-        video.currentTime = t;
-      }
-    };
-    const onScroll = () => {
-      if (rafId == null) rafId = requestAnimationFrame(update);
-    };
-
-    const prime = () => {
-      if (isMobile) return;
-      video
-        .play()
-        .then(() => {
-          video.pause();
-          video.currentTime = 0;
-          update();
-        })
-        .catch(() => {
-          video.currentTime = 0;
-          update();
-        });
-    };
-    if (video.readyState >= 2) prime();
-    else video.addEventListener("loadeddata", prime, { once: true });
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      video.removeEventListener("loadeddata", prime);
-      if (rafId) cancelAnimationFrame(rafId);
-    };
-  }, [isMobile]);
+    if (!video) return;
+    video.muted = true;
+    video.play().catch(() => {});
+  }, []);
 
   // GSAP scroll-linked card entrances + header reveal.
   useEffect(() => {
@@ -119,7 +58,7 @@ export default function Projects() {
         },
       });
 
-      // Each card floats up like a heavy luxury object, scrubbed to scroll,
+      // Each card floats up like a heavy luxury object, scroll-linked,
       // reversing when scrolling back up. Staggered ~150px down the list.
       const outers = gsap.utils.toArray<HTMLElement>(".proj-card-outer");
       outers.forEach((outer, i) => {
@@ -168,7 +107,7 @@ export default function Projects() {
         background: "#0e0e0e",
       }}
     >
-      {/* Scroll-scrubbed video background (sticky) */}
+      {/* Autoplay video background (sticky) */}
       <div
         style={{
           position: isMobile ? "absolute" : "sticky",
@@ -185,8 +124,8 @@ export default function Projects() {
           muted
           playsInline
           preload="auto"
-          autoPlay={isMobile}
-          loop={isMobile}
+          autoPlay
+          loop
           style={{
             position: "absolute",
             inset: 0,
@@ -207,7 +146,7 @@ export default function Projects() {
           padding: isMobile ? "120px 20px 100px" : "0 24px 18vh",
         }}
       >
-        {/* Header â€” owns the first screen */}
+        {/* Header — owns the first screen */}
         <div
           className="proj-head"
           style={{
@@ -244,7 +183,7 @@ export default function Projects() {
             className="proj-head-anim font-body"
             style={{ fontWeight: 300, fontSize: "0.95rem", letterSpacing: "0.08em", color: "rgba(255,255,255,0.75)" }}
           >
-            500+ tamamlanan projeden Ã¶ne Ã§Ä±kanlar
+            500+ tamamlanan projeden öne çıkanlar
           </p>
         </div>
 
@@ -270,12 +209,12 @@ export default function Projects() {
                     <h3 className="proj-name">{p.name}</h3>
                     <span className="proj-rule" />
                     <div className="proj-meta">
-                      {p.location} Â· {p.year}
+                      {p.location} · {p.year}
                     </div>
                     <div className="proj-sqm">{p.sqm}</div>
                     <a href="#iletisim" className="proj-link">
-                      Projeyi Ä°ncele
-                      <span className="arr">Ã¢â€ â€™</span>
+                      Projeyi İncele
+                      <span className="arr">→</span>
                       <span className="u" />
                     </a>
                   </div>
