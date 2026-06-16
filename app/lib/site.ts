@@ -1,4 +1,4 @@
-// Central content for DEMO İNŞAAT — single source of truth.
+﻿// Central content for DEMO İNŞAAT — single source of truth.
 
 export type Project = {
   id: number;

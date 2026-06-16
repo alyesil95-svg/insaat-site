@@ -1,4 +1,4 @@
-import Navbar from "./components/Navbar";
+﻿import Navbar from "./components/Navbar";
 import ScrollManager from "./components/ScrollManager";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
