@@ -1,8 +1,14 @@
 ﻿"use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger } from "../lib/gsap";
 import { PROJECTS } from "../lib/site";
+import {
+  useIsMobile,
+  useDeviceVideo,
+  isMobileDevice,
+  fadeInOnView,
+} from "../lib/mobile";
 
 // Cinematic card imagery (per the requested Unsplash set).
 const CARD_IMAGES: Record<number, string> = {
@@ -14,34 +20,37 @@ const CARD_IMAGES: Record<number, string> = {
   6: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=800",
 };
 
+const PROJECTS_DESKTOP =
+  "https://res.cloudinary.com/dqmjnp8ti/video/upload/q_auto:low,w_854,h_480,f_mp4,br_800k/v1781630869/projects_alk3hp.mp4";
+const PROJECTS_MOBILE =
+  "https://res.cloudinary.com/dqmjnp8ti/video/upload/q_auto:low,w_640,h_360,f_mp4,br_400k/v1781630869/projects_alk3hp.mp4";
+
 export default function Projects() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const check = () =>
-      setIsMobile(
-        window.matchMedia("(max-width: 768px)").matches ||
-          window.matchMedia("(pointer: coarse)").matches
-      );
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
+  const isMobile = useIsMobile();
+  const videoSrc = useDeviceVideo(PROJECTS_DESKTOP, PROJECTS_MOBILE);
 
   // Background video — silent autoplay loop (no scrubbing).
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || !videoSrc) return;
     video.muted = true;
     video.play().catch(() => {});
-  }, []);
+  }, [videoSrc]);
 
-  // GSAP scroll-linked card entrances + header reveal.
+  // Card entrances + header reveal.
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
+
+    // Mobile: skip all GSAP/ScrollTrigger 3D work — simple fade only.
+    if (isMobileDevice()) {
+      return fadeInOnView([
+        ...section.querySelectorAll<HTMLElement>(".proj-head-anim"),
+        ...section.querySelectorAll<HTMLElement>(".proj-card-outer"),
+      ]);
+    }
 
     const ctx = gsap.context(() => {
       // Header reveals first.
@@ -120,7 +129,7 @@ export default function Projects() {
       >
         <video
           ref={videoRef}
-          src="https://res.cloudinary.com/dqmjnp8ti/video/upload/q_auto:low,w_854,h_480,f_mp4,br_800k/v1781630869/projects_alk3hp.mp4"
+          src={videoSrc}
           muted
           playsInline
           preload="auto"
@@ -199,6 +208,8 @@ export default function Projects() {
                       className="proj-img"
                       src={CARD_IMAGES[p.id]}
                       alt={p.name}
+                      width={800}
+                      height={600}
                       loading="lazy"
                     />
                     <div className="proj-imggrad" />

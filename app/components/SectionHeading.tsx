@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "../lib/gsap";
+import { isMobileDevice, fadeInOnView } from "../lib/mobile";
 
 export default function SectionHeading({
   eyebrow,
@@ -17,6 +18,10 @@ export default function SectionHeading({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const root = ref.current;
+    if (root && isMobileDevice()) {
+      return fadeInOnView([...root.querySelectorAll<HTMLElement>(".sh-anim")]);
+    }
     const ctx = gsap.context(() => {
       gsap.from(".sh-anim", {
         y: 40,

@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "../lib/gsap";
 import { WHY_US } from "../lib/site";
+import { isMobileDevice, fadeInOnView } from "../lib/mobile";
 import SectionHeading from "./SectionHeading";
 
 // Thin gold line icons, one per reason.
@@ -43,6 +44,10 @@ function Reason({
   const fromLeft = index % 2 === 0;
 
   useEffect(() => {
+    // Mobile: no horizontal slide / ScrollTrigger — simple fade.
+    if (isMobileDevice()) {
+      return fadeInOnView([ref.current]);
+    }
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ref.current,

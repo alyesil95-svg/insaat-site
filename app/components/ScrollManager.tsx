@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { ScrollTrigger } from "../lib/gsap";
+import { isMobileDevice } from "../lib/mobile";
 
 /**
  * Keeps ScrollTrigger's measured positions correct.
@@ -14,6 +15,10 @@ import { ScrollTrigger } from "../lib/gsap";
  */
 export default function ScrollManager() {
   useEffect(() => {
+    // Mobile has no ScrollTriggers (animations fall back to a CSS fade), so
+    // there's nothing to refresh — skip the work entirely.
+    if (isMobileDevice()) return;
+
     let raf = 0;
     const refresh = () => {
       cancelAnimationFrame(raf);

@@ -11,7 +11,7 @@ export default function Services() {
 
   useEffect(() => {
     const check = () =>
-      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+      setIsMobile(window.innerWidth < 768 || navigator.maxTouchPoints > 0);
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
@@ -128,6 +128,8 @@ export default function Services() {
               <img
                 src={s.image}
                 alt={s.title}
+                width={1280}
+                height={720}
                 className="h-full w-full object-cover"
                 loading="lazy"
               />

@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "../lib/gsap";
 import { STATS } from "../lib/site";
+import { isMobileDevice, fadeInOnView } from "../lib/mobile";
 
 function formatTr(n: number) {
   return Math.round(n).toLocaleString("tr-TR");
@@ -12,6 +13,17 @@ export default function Stats() {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    const root = ref.current;
+    if (!root) return;
+
+    // Mobile: no count-up / drift ScrollTriggers — show final numbers + fade.
+    if (isMobileDevice()) {
+      root.querySelectorAll<HTMLElement>(".stat-number").forEach((el) => {
+        el.firstChild!.textContent = formatTr(Number(el.dataset.value));
+      });
+      return fadeInOnView([...root.querySelectorAll<HTMLElement>(".stat-item")]);
+    }
+
     const ctx = gsap.context(() => {
       const numbers = gsap.utils.toArray<HTMLElement>(".stat-number");
       numbers.forEach((el) => {

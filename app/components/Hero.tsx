@@ -1,17 +1,24 @@
 ﻿"use client";
 import { useEffect, useRef } from "react";
+import { useDeviceVideo } from "../lib/mobile";
+
+const HERO_DESKTOP =
+  "https://res.cloudinary.com/dqmjnp8ti/video/upload/q_auto:low,w_1280,f_mp4/v1781630695/hero_hquc97.mp4";
+const HERO_MOBILE =
+  "https://res.cloudinary.com/dqmjnp8ti/video/upload/q_auto:low,w_640,h_360,f_mp4,br_400k/v1781630695/hero_hquc97.mp4";
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const videoSrc = useDeviceVideo(HERO_DESKTOP, HERO_MOBILE);
 
   // Silent autoplay loop (no scrubbing) — kick playback in case the
   // autoplay attribute is blocked until the element is ready.
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || !videoSrc) return;
     video.muted = true;
     video.play().catch(() => {});
-  }, []);
+  }, [videoSrc]);
 
   return (
     <section
@@ -20,7 +27,7 @@ export default function Hero() {
     >
       <video
         ref={videoRef}
-        src="https://res.cloudinary.com/dqmjnp8ti/video/upload/q_auto:low,w_1280,f_mp4/v1781630695/hero_hquc97.mp4"
+        src={videoSrc}
         autoPlay
         muted
         loop
