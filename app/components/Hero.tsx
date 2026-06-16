@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useEffect, useRef } from "react";
 
 export default function Hero() {
@@ -146,7 +146,7 @@ export default function Hero() {
               animation: "fadeIn 1.4s ease both 0.2s",
             }}
           >
-            TÃ¼rkiye&apos;nin Ã–ncÃ¼ Ä°nÅŸaat FirmasÄ±
+            Türkiye&apos;nin Öncü İnşaat Firması
           </p>
 
           <h1
@@ -160,7 +160,7 @@ export default function Hero() {
               animation: "fadeIn 1.6s ease both 0.35s",
             }}
           >
-            DEMO Ä°NÅAAT
+            DEMO İNŞAAT
           </h1>
 
           <p
@@ -175,7 +175,7 @@ export default function Hero() {
               animation: "fadeIn 1.6s ease both 0.55s",
             }}
           >
-            TÃ¼rkiye&apos;nin En Prestijli YapÄ±larÄ±nÄ± Ä°nÅŸa Ediyoruz
+            Türkiye&apos;nin En Prestijli Yapılarını İnşa Ediyoruz
           </p>
 
           <div
@@ -192,9 +192,9 @@ export default function Hero() {
               animation: "fadeIn 1.6s ease both 0.75s",
             }}
           >
-            <span>Ä°STANBUL</span>
+            <span>İSTANBUL</span>
             <span style={{ width: 4, height: 4, borderRadius: 9999, background: "#c9a84c" }} />
-            <span>Ä°ZMÄ°R</span>
+            <span>İZMİR</span>
             <span style={{ width: 4, height: 4, borderRadius: 9999, background: "#c9a84c" }} />
             <span>ANKARA</span>
           </div>

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "../lib/gsap";
@@ -207,7 +207,7 @@ export default function Projects() {
           padding: isMobile ? "120px 20px 100px" : "0 24px 18vh",
         }}
       >
-        {/* Header â€” owns the first screen */}
+        {/* Header — owns the first screen */}
         <div
           className="proj-head"
           style={{
@@ -244,7 +244,7 @@ export default function Projects() {
             className="proj-head-anim font-body"
             style={{ fontWeight: 300, fontSize: "0.95rem", letterSpacing: "0.08em", color: "rgba(255,255,255,0.75)" }}
           >
-            500+ tamamlanan projeden Ã¶ne Ã§Ä±kanlar
+            500+ tamamlanan projeden öne çıkanlar
           </p>
         </div>
 
@@ -270,11 +270,11 @@ export default function Projects() {
                     <h3 className="proj-name">{p.name}</h3>
                     <span className="proj-rule" />
                     <div className="proj-meta">
-                      {p.location} Â· {p.year}
+                      {p.location} · {p.year}
                     </div>
                     <div className="proj-sqm">{p.sqm}</div>
                     <a href="#iletisim" className="proj-link">
-                      Projeyi Ä°ncele
+                      Projeyi İncele
                       <span className="arr">â†’</span>
                       <span className="u" />
                     </a>
