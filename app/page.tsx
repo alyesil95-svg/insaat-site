@@ -1,5 +1,6 @@
 ﻿import Navbar from "./components/Navbar";
 import ScrollManager from "./components/ScrollManager";
+import CurtainTransition from "./components/CurtainTransition";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
 import Services from "./components/Services";
@@ -14,6 +15,7 @@ export default function Home() {
   return (
     <main className="relative overflow-x-clip bg-white">
       <ScrollManager />
+      <CurtainTransition />
       <Navbar />
       <Hero />
       <Projects />
